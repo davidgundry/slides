@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="../../dist/reset.css">
+		<link rel="stylesheet" href="../../dist/reveal.css">
+		<link rel="stylesheet" href="../../dist/theme/custom.css">
+
+		<style>
+			.frame-area {
+				display: block;
+				width: 50vw;  /* RESPONSIVE WIDTH */
+				height: 70vh;
+				overflow: auto;  /* EDIT TO hidden FOR NO SCROLLBAR */
+				border: #999999 1px solid;
+				margin: 0px;
+				padding: 0px;
+			}
+
+			li {
+				text-align: left;
+			}
+
+			ul ul li {
+				padding: 0em;
+			}
+
+			h4, h2 {
+				text-align: left;
+			}
+
+			.container{
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			}
+			.col {
+			flex: 1;
+			}
+			.quote {
+				font-style:italic
+			}
+			.ref {
+				text-align: left;
+			}
+			.left {
+				text-align: left;
+			}
+			.qbox {
+				text-align: left;
+				border-radius: 25px;
+				border: 2px solid #00A7E1;
+				padding: 20px;
+			}
+
+			section {
+				text-align: left;
+			}
+		</style>
+		
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1 style="text-align: center;">Model-View-Controller</h1>
+					<h3 style="text-align: center;">Mobile Application Development</h2>
+					<p>David Gundry <br /> d.gundry@yorksj.ac.uk</p>
+				</section>
+
+				<section data-markdown>
+					## Overview
+
+					1. Observer Design Pattern
+					2. Model View Controller Architecture
+					
+
+				</section>
+
+				<section data-markdown>
+					## Model View Controller
+
+					MVC is an Architectural Pattern designed to solve the problem of closely coupled UI, business logic, and data
+				</section>
+
+				<section data-markdown>
+					## Without MVC
+
+					It is easy to mix business logic into your UI code.
+
+					In Android, this would be business logic in your Activity.
+
+					This close coupling leads to all sorts of problems.
+				</section>
+
+				<section data-markdown>
+					### Why MVC?
+
+					By separating UI from business logic it is easier to develop and test code.
+				</section>
+
+			</div>
+		</div>
+
+		<script src="../../dist/reveal.js"></script>
+		<script src="../../plugin/notes/notes.js"></script>
+		<script src="../../plugin/markdown/markdown.js"></script>
+		<script src="../../plugin/highlight/highlight.js"></script>
+		<script src="../../plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				transition: 'none', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+			});
+		</script>
+	</body>
+</html>

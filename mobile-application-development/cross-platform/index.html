@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="../../dist/reset.css">
+		<link rel="stylesheet" href="../../dist/reveal.css">
+		<link rel="stylesheet" href="../../dist/theme/custom.css">
+
+		<style>
+			.frame-area {
+				display: block;
+				width: 50vw;  /* RESPONSIVE WIDTH */
+				height: 70vh;
+				overflow: auto;  /* EDIT TO hidden FOR NO SCROLLBAR */
+				border: #999999 1px solid;
+				margin: 0px;
+				padding: 0px;
+			}
+
+			li {
+				text-align: left;
+			}
+
+			ul ul li {
+				padding: 0em;
+			}
+
+			h4, h2 {
+				text-align: left;
+			}
+
+			.container{
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			}
+			.col {
+			flex: 1;
+			}
+			.quote {
+				font-style:italic
+			}
+			.ref {
+				text-align: left;
+			}
+			.left {
+				text-align: left;
+			}
+			.qbox {
+				text-align: left;
+				border-radius: 25px;
+				border: 2px solid #00A7E1;
+				padding: 20px;
+			}
+
+			section {
+				text-align: left;
+			}
+		</style>
+		
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1 style="text-align: center;">Cross-platform development with Web Technologies</h1>
+					<h3 style="text-align: center;">Mobile Application Development</h2>
+					<p>David Gundry <br /> d.gundry@yorksj.ac.uk</p>
+					<p>Based on content by Abdulrazaq Abba</a></p>
+				</section>
+
+				<section data-markdown="">
+					## Overview
+
+					1. Choosing a Mobile Platform
+					1. Android Development
+					2. iOS Development
+					3. Web Apps
+					4. Progressive Web Apps
+					5. ReactNative
+				</section>
+
+				<section data-markdown>
+					## Choosing a Mobile Platform
+
+					What platforms do you need to target?
+					
+					Historically there were several competing mobile OS
+
+					* Android
+					* iOS
+					* Microsoft
+					* RIM
+					* Symbian
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Popular Platforms
+
+							Android and iOS dominate the market.
+						</div>
+						<img class="col" src="./img/market-share.png" alt="Market share of Android and iOS mobile platforms"/>
+					</div>
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							## Android Application Development
+
+							We have explored the fundamentals of Android development.
+		
+							This allows you to develop for a range of Android platforms.
+						</div>
+						<div class="col">
+							<img style="margin-left:100px" src="./img/android.png" alt="Android logo"/>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<img src="./img/android-platforms.png" alt="Diagram showing platforms Android can run on"/>
+				</section>
+
+			<!--	<section data-markdown>
+					Android devices use the `.apk` file to install an application into the system.
+
+					### .apk contents:
+
+					* `META-INF` directory: metadata for the associated files of the application, including certificate of the application.
+					* `lib`: a directory that contains compiled code.
+					* `res`: a directory for resources not compiled into resources.arsc.
+					* `assets`: a directory for applications assets, which can be retrieved by AssetManager.
+					* `AndroidManifest.xml`: describes the name, version, access rights, referenced library files of an application
+					* `classes.dex`: The classes compiled in the dex file format understandable by the Android Runtime and also by the Dalvik virtual machine.
+					* `resources.arsc`: a file containing precompiled resources. For example binary XML
+				</section>-->
+
+				<section data-markdown>
+					We have only scratched the surface of what you can do with Android
+
+					* graphics
+					* animation
+					* sensors
+					* GPS
+					* Telephony
+					* SMS, etc.
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							## iOS Application Development
+
+							iOS is the official operating system for Apple platforms
+		
+							Apple's iOS development tools are available only for iOS
+		
+							Third-party tools are available
+						</div>
+						<div class="col">
+							<img style="margin-left:100px" src="./img/ios.png" alt="Apple logo"/>
+						</div>
+					</div>
+				</section>
+
+				<section data-markdown>
+					#### Xcode
+
+					Xcode is the popular IDE for developing iOS applications, comparable with Android Studio.
+					
+					The default programming language is Swift.
+				</section>
+
+			<!--	<section data-markdown>
+					#### The application Bundle (.ipa)
+	
+					Inside iOS bundle is a directory that groups an application resources together.
+
+					The bundle has a file extension `.ipa` for macOS and iOS.
+
+					An `.ipa` file is zipped folder (in comparison to android, this is the iOS equivalent of a .apk file).
+
+					Inside an iOS application bundle `.ipa`, the resources are organised as follow.
+
+					* An executable file
+					* Information property list - Info.plist
+					* application icons - for the home screen
+					* Storyboards - the layout of the screens
+					* Settings.bundle - the file that contains options for settings
+					* All assets go in the root folder (localised assets go in subfolders)
+				</section>-->
+
+
+
+				<section data-markdown>
+					## Multiple platforms
+
+					Many apps are developed for _both_ Android _and_ iOS _and_ the web.
+
+					How do you best allocate development resources?
+				</section>
+
+				<section data-markdown>
+					#### Native
+					
+					Develop an app for each target platform
+
+					#### Web app
+
+					Develop an app using common web standards
+
+					#### Cross-platform
+
+					Develop one app that works on multiple platforms
+				</section>
+
+				<section>
+					<h3>Native Development</h3>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Pros
+
+							* Official language and resources
+							* Access to all the resources of the iOS
+							* Best performance
+							* Best user experience
+						</div>
+						<div class="col" data-markdown>
+							#### Cons
+					
+							* Limited market for platform
+							* Multiple code-bases
+							* More developer time
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Web App Development</h3>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Pros
+							* Share code with existing website
+							* Familiar languages
+							* Easy to deploy and update
+						</div>
+						<div class="col" data-markdown>
+							#### Cons
+							* Not a native experience (?)
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<h3>Cross-platform Development</h3>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Pros
+							* Single codebase
+							* Less developer time
+						</div>
+						<div class="col" data-markdown>
+							#### Cons
+							* Limited access to features(?)
+							* Worse user experience(?)
+							* Worse performance(?)
+							* Less integrated to platform conventions
+						</div>
+					</div>
+				</section>
+
+				<section data-markdown>
+					#### The winner?
+
+					Many of the limitations of web technologies are being overcome
+					
+					Web is becoming increasingly popular as a platform, and is used by most cross-platform technologies
+				</section>
+
+				<section data-markdown>
+					## Web Apps
+
+					Modern web technologies (HTML5/JS) can create full apps, e.g.
+
+					* Google Docs
+					* Microsoft 365
+					* Slack / Discord 
+					* ...
+				</section>
+
+				<section data-markdown>
+					#### Web is cross-platform
+
+					Any platform with a modern browser can use a web app.
+
+					>"Write once, run anywhere"
+				</section>
+
+				<section>
+					<div class="container">
+					<div class="col" data-markdown>
+					#### Web can access many native features and hardware
+
+					* [Web BlueTooth](https://webbluetoothcg.github.io/web-bluetooth/)
+					* [Web USB](https://wicg.github.io/webusb/)
+					* [Web MIDI](https://www.w3.org/TR/webmidi/)
+					* [Web VR](https://w3c.github.io/webvr/)
+				</div>
+				<div class="col">
+					<iframe src="https://dotpiano.com/" width="400" height="400"></iframe>
+					<a href="https://dotpiano.com/">https://dotpiano.com/</a>
+				</div>
+			</div>
+				</section>
+
+				<section data-background-iframe="https://www.youtube-nocookie.com/embed/_ILNAQUS8TI">	
+				</section>
+
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Web browser is clunky
+
+							Solutions:
+
+							* Wrap web app
+							* Progressive web app
+						</div>
+						<div class="col">
+							<img src="./img/duckduckgo.png" alt="Duck Duck Go browser screenshot" height="500" style="margin-left:100px;"/>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Wrap a web app
+
+							Build a native app shell.
+		
+							Embed web app using `WebView` component.
+		
+								WebView myWebView = (WebView) findViewById(R.id.webview);
+								myWebView.loadUrl("http://www.example.com");
+
+							Or wrap web apps with [Apache Cordova](https://cordova.apache.org/)
+						</div>
+						<div class="col" data-markdown>
+							
+
+							![Apache Cordova logo](./img/cordova_bot.png)
+						</div>
+					</div>
+				</section>
+
+				<section data-markdown>
+					## Progressive Web App
+
+					* Access through browser
+					* "Save to home screen"
+					* Publish via app stores (except Apple App Store)
+				</section>
+
+				<section data-markdown>
+					#### Native-ish
+
+					Once installed, appears like native app
+					
+					Basic shell is stored in browser cache, rest of data is fetched from website.
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Lightweight
+
+							PWA tend to be much smaller than native equivalent
+						</div>
+						<div class="col">
+							<img src="./img/tinder.webp" alt="Bar chart showing the Tinder Android App with a size of 30MB and the Progressive Web App with a size of 2.8MB"/>
+							<p><a style="font-size: medium" href="https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0">A Tinder Progressive Web App Performance Case Study</a></p>
+						</div>
+				</section>
+
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Manifest
+							
+							Stores metadata about the app
+
+							Required to be installed as PWA
+						</div>
+
+						<div class="col" data-markdown>
+
+	{
+		"name": "My Progressive Web Application",
+		"short_name": "MyPWA",
+		"start_url": ".",
+		"display": "standalone",
+		"background_color": "#ffffff",
+		"description": "An app you can install from your browser",
+		"icons": [
+			{
+				"src": "images/icon48.png",
+				"sizes": "48x48",
+				"type": "image/png"
+			},
+			{
+				"src": "images/icon128.png",
+				"sizes": "128x128",
+				"type": "image/png"
+			},
+			/* ... */
+		],
+	}</div>		  
+				</section>
+
+				<section data-markdown>
+					#### DataStorage
+
+					Modern web data storage APIs allow you to cache data in the browser.
+
+					* WebStorage API
+					* Indexed Database API
+
+					Cache an offline version of the app.
+				</section>
+
+				<section data-markdown>
+					#### Service Workers
+
+					PWAs install a `ServiceWorker` script.
+
+					Act as a proxy server between the browser and the network
+
+					* Intercept HTTP requests, check server availability and respond appropriately 
+					* Access push notifications
+				</section>
+
+
+				<section data-markdown>
+					#### WebAssembly
+					
+					Execute precompiled code written in languages like C, C++ for high performance
+				</section>
+
+
+
+				<section data-markdown>
+					#### Limitations
+
+					Hard to make website feel like native experience
+
+					Different UI components
+				</section>
+
+				<section>
+					<div class="container">
+						<div data-markdown class="col">
+							## React Native
+
+							ReactNative uses native components for each target platform
+							* HTML5
+							* Android
+							* iOS
+		
+							> "Learn once, write anywhere" 
+						</div>
+						<img class="col" src="./img/React%20Logo.svg" alt="React logo" width="300" height="300" />
+					</div>
+				</section>
+
+				<section>
+					<div class="container">
+						<div data-markdown class="col">
+							#### React
+
+							React is one of the most popular JavaScript web frameworks
+
+							* Component-based architecture.
+							* Maintains virtual DOM (Document Object Model)
+							* Reconciles changes between DOM and virtual DOM for efficient updating
+						</div>
+						<img class="col" src="./img/React%20Logo.svg" alt="React logo" width="300" height="300" />
+					</div>
+				</section>
+				
+				<section>
+					<div class="container">
+						<div data-markdown class="col">
+					React Native allows the use of native features using React
+
+					Code with ReactNative components
+
+					* `Button`
+					* `Switch`
+					* `Scrollview`
+					* `View`
+					
+					Uses platform native component at runtime
+
+				</div>
+				<img class="col" src="./img/reactnative-components.png" alt="Diagram showing app screen with labelled ReactNative components" />
+			</div>
+		</section>
+
+			<!--	<section>
+					<table style="font-size: large"><thead><tr><th>React Native UI Component</th><th>Android View</th><th>iOS View</th><th>Web Analog</th><th>Description</th></tr></thead><tbody><tr><td><code>&lt;View&gt;</code></td><td><code>&lt;ViewGroup&gt;</code></td><td><code>&lt;UIView&gt;</code></td><td>A non-scrolling <code>&lt;div&gt;</code></td><td>A container that supports layout with flexbox, style, some touch handling, and accessibility controls</td></tr><tr><td><code>&lt;Text&gt;</code></td><td><code>&lt;TextView&gt;</code></td><td><code>&lt;UITextView&gt;</code></td><td><code>&lt;p&gt;</code></td><td>Displays, styles, and nests strings of text and even handles touch events</td></tr><tr><td><code>&lt;Image&gt;</code></td><td><code>&lt;ImageView&gt;</code></td><td><code>&lt;UIImageView&gt;</code></td><td><code>&lt;img&gt;</code></td><td>Displays different types of images</td></tr><tr><td><code>&lt;ScrollView&gt;</code></td><td><code>&lt;ScrollView&gt;</code></td><td><code>&lt;UIScrollView&gt;</code></td><td><code>&lt;div&gt;</code></td><td>A generic scrolling container that can contain multiple components and views</td></tr><tr><td><code>&lt;TextInput&gt;</code></td><td><code>&lt;EditText&gt;</code></td><td><code>&lt;UITextField&gt;</code></td><td><code>&lt;input type="text"&gt;</code></td><td>Allows the user to enter text</td></tr></tbody></table>
+					<p style="font-size:medium">Table from <a href="https://reactnative.dev/docs/intro-react-native-components">React Native Docs</a></p>
+				</section>-->
+				
+				<section data-markdown>
+					We still need to build for each platform separately
+
+					* To build on Android we use Android Studio
+					* To build on iOS, we use Xcode
+				</section>
+
+				<section data-markdown>
+					Can use `Platform` module to write platform-specific code
+
+						import { Platform } from 'react-native'
+
+					Code for all platforms in single codebase behind run-time calls to `Platform.OS`:
+					
+						if (Platform.OS === "ios")
+						{ 
+							/* ... */
+						}</section>
+
+
+				<section data-markdown>
+					## Crash Course in ReactNative
+				</section>
+
+				<section>
+					<div data-snack-id="@davidgundry/9ebb0a" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+					<script async src="https://snack.expo.dev/embed.js"></script>
+				</section>
+
+				<section data-markdown>
+					#### JavaScript
+
+					JavaScript can be used to script webpages.
+
+						const myString = "&lt;p&gt;This is a string&lt;/p&gt;";
+
+						const element = document.getElementByID("target");
+						element.innerHTML = myString;</section>
+
+				
+				<section data-markdown>
+					#### JavaScript Extension Syntax (JSX)
+
+					With JSX, we can write HTML/XML inline
+
+						const jsx = &lt;p&gt;This is some inline HTML&lt;/p&gt;
+
+					This is not valid JS, so it must first be transpiled to valid JS.
+
+					Within inline XML, expressions in braces are evaluated as JavaScript
+
+						const jsx = &lt;p&gt;My number is { Math.random() } &lt;/p&gt;</section>
+
+				<section data-markdown>
+					#### Components
+
+					We can define components as functions returning JSX:
+
+						const MyComponent = () =&gt; &lt;p&gt;My name is David&lt;/p&gt;
+
+					A component with multiple children might look like:
+
+						const ComplexComponent = () =&gt; (
+							&lt;&gt;
+								&lt;h1&gt;This is a heading&lt;/h1&gt;
+								&lt;p&gt;This is some text&lt;/p&gt;
+							&lt;/&gt;
+						)</section>
+
+				<section data-markdown>
+					#### Parameters
+
+					Components can take parameters (through object destructuring)
+
+						const AboutMe = ({name, age}) => &lt;p&gt;My name is {name}, I am {age} years old.&lt;/p&gt;</section>
+
+				<section data-markdown>
+					#### Styling
+
+					Rather than using CSS, styling in React is done using objects (that use CSS properties).
+
+						const myStyle = { color: "red"}
+
+						const AboutMe = ({name, age}) =>
+							&lt;p style={myStyle}&gt;My name is {name}, I am {age} years old.&lt;/p&gt;</section>
+
+				<section data-markdown>
+					#### React
+
+					React builds websites out of components and JavaScript.
+
+						const Card = () =&gt; &lt;div style={cardStyle}&gt;{children}&lt;/div&gt;
+						const CatPicture = ({url}) =&gt; &lt;img src={url} /&gt;
+
+						const App = () => (
+							&lt;&gt;
+								&lt;Card&gt;&lt;CatPicture url="https://placekitten.com/256/256" /&gt;&lt;/Card&gt;
+							&lt;/&gt;
+						)</section>
+
+				<section data-markdown>
+					#### ReactNative
+
+					We do not use HTML elements in ReactNative.
+
+					Instead we must use ReactNative components, that are replaced by a native equivalent on each platform.
+
+						const myComponent = () =&gt; &lt;Text&gt;This is some text&lt;/Text&gt;</section>
+
+				<section>
+					<div data-snack-id="@davidgundry/9ebb0a" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+					<script async src="https://snack.expo.dev/embed.js"></script>
+				</section>
+
+				<section data-markdown class="qbox">
+					#### Interested in ReactNative?
+
+					Go to https://snack.expo.dev/@davidgundry/9ebb0a to open the interactive example.
+
+					* Documentation https://reactnative.dev/docs/intro-react
+					* IDE in your browser https://snack.expo.dev/
+				</section>
+
+			</div>
+		</div>
+
+		<script src="../../dist/reveal.js"></script>
+		<script src="../../plugin/notes/notes.js"></script>
+		<script src="../../plugin/markdown/markdown.js"></script>
+		<script src="../../plugin/highlight/highlight.js"></script>
+		<script src="../../plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				transition: 'none', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+			});
+		</script>
+	</body>
+</html>
