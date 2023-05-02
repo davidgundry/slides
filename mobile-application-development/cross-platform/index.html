@@ -77,6 +77,12 @@
 					<p>Based on content by Abdulrazaq Abba</a></p>
 				</section>
 
+				<section data-markdown class="qbox">
+					## York St John Experience Survey
+
+					### https://tinyurl.com/pandahorse
+				</section>
+
 				<section data-markdown="">
 					## Overview
 
@@ -132,7 +138,7 @@
 					<img src="./img/android-platforms.png" alt="Diagram showing platforms Android can run on"/>
 				</section>
 
-			<!--	<section data-markdown>
+				<section data-markdown>
 					Android devices use the `.apk` file to install an application into the system.
 
 					### .apk contents:
@@ -144,7 +150,7 @@
 					* `AndroidManifest.xml`: describes the name, version, access rights, referenced library files of an application
 					* `classes.dex`: The classes compiled in the dex file format understandable by the Android Runtime and also by the Dalvik virtual machine.
 					* `resources.arsc`: a file containing precompiled resources. For example binary XML
-				</section>-->
+				</section>
 
 				<section data-markdown>
 					We have only scratched the surface of what you can do with Android
@@ -182,16 +188,77 @@
 					The default programming language is Swift.
 				</section>
 
-			<!--	<section data-markdown>
+				<section data-markdown>
+					### iOS Architecture
+					iOS has a layered architecture
+
+					* Cocoa Touch (Application Layer)
+					* Media
+					* Core Services
+					* Core OS
+				</section>
+
+				<section data-markdown>
+					#### Cocoa Touch (Application Layer)
+
+					* Provides components for developing UI
+					* Provides the Controllers, Widgets, etc.
+					* Provides access to main system functionality, such as Contacts
+					* Camera, touch input, push notifications, etc.
+					* ...
+				</section>
+
+				<section data-markdown>
+					### Media Layer
+
+					Frameworks for graphics and audio
+
+					* ULKit Graphics
+					* Core Graphics (Quartz)
+					* OpenGL
+					* Metal (hardware-accelerated graphics API)
+					* Core Animation
+					* Media player
+					* Core Audio
+					* OpenAL
+					* ...
+				</section>		
+				
+				<section data-markdown>
+					#### Core Services
+
+					Frameworks for 
+
+					* Address Book
+					* Cloud data storage
+					* Device location
+					* Motion-based data
+					* User health data
+					* Smart home management
+					* In-app purchases
+					* ...
+					
+				</section>
+
+				<section data-markdown>
+					#### Core OS
+
+					Basic services
+
+					* Bluetooth
+					* USB / External Accessories
+					* Security Services
+					* Networking
+					* Threading
+					* Standard I/O
+					* Kernel operations, etc.
+					* ...
+				</section>		
+
+				<section data-markdown>
 					#### The application Bundle (.ipa)
 	
-					Inside iOS bundle is a directory that groups an application resources together.
-
-					The bundle has a file extension `.ipa` for macOS and iOS.
-
-					An `.ipa` file is zipped folder (in comparison to android, this is the iOS equivalent of a .apk file).
-
-					Inside an iOS application bundle `.ipa`, the resources are organised as follow.
+					In an iOS application bundle `.ipa` the resources are organised as follows:
 
 					* An executable file
 					* Information property list - Info.plist
@@ -199,7 +266,7 @@
 					* Storyboards - the layout of the screens
 					* Settings.bundle - the file that contains options for settings
 					* All assets go in the root folder (localised assets go in subfolders)
-				</section>-->
+				</section>
 
 
 
