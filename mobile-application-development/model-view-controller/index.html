@@ -10,6 +10,9 @@
 		<link rel="stylesheet" href="../../dist/reveal.css">
 		<link rel="stylesheet" href="../../dist/theme/custom.css">
 
+		<script src="//unpkg.com/graphre/dist/graphre.js"></script>
+		<script src="//unpkg.com/nomnoml/dist/nomnoml.js"></script>
+
 		<style>
 			.frame-area {
 				display: block;
@@ -79,11 +82,215 @@
 				<section data-markdown>
 					## Overview
 
-					1. Observer Design Pattern
+					1. Separation of Concerns
 					2. Model View Controller Architecture
+				</section>
+
+				<section data-markdown>
+					## Separation of Concerns
+
+					Each 'part' (function, class, module) of the code addresses a separte concern.
+
+					It provides a cohesive chunk of functionality.
+				</section>
+
+				<section data-markdown>
+					#### Why Separation of Concerns?
+
+					Easier to write and maintain code through modularity.
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Single Responsibility Principle
+
+							> "There should never be more than one reason for class to change"
+		
+							Each class is responsible to only one actor.
+						</div>
+						<div class="col">
+							<canvas id="nomnoml4"></canvas>
+							<script>
+								nomnoml.draw(document.getElementById('nomnoml4'), '\
+	[<actor>UX;Developer]->[MyActivity]\n\
+	[<actor>Database;Developer]->[MyActivity]\n\
+	[<actor>;Translator]->[MyActivity]');
+							</script>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Single Responsibility Principle
+
+							> "There should never be more than one reason for class to change"
+		
+							Each class is responsible to only one actor.
+						</div>
+						<div class="col">
+							<canvas id="nomnoml6"></canvas>
+							<script>
+								nomnoml.draw(document.getElementById('nomnoml6'), '\
+	[<actor>UX;Developer]->[MyActivity]\n\
+	[<actor>Database;Developer]->[DatabaseConnector]\n\
+	[<actor>Translator]->[strings.xml]');
+							</script>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### How to do Separation of Concerns
+
+							Encapsulate data and behaviour within a section of code that has a well-defined interface
+		
+							* Interface as a contract
+							* Abstracts details of implementation
+						</div>
+						<div class="col">
+							<canvas class="col" id="nomnoml5"></canvas>
+							<script>
+							var canvas = document.getElementById('nomnoml5')
+							var source = '[Engine|isRunning: boolean|start();stop();accelerator(int amount)]';
+							nomnoml.draw(canvas, source)
+							</script>
+							<div data-markdown>
+							
+								public int countValues(int[] array, int target);
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Example: Android `View`
+
+							Concern: appearance and state of one UI component
+
+							`View` defines what it means to be a UI component
+
+							Subclasses defines behaviour of a particular component
+						</div>
+						<canvas class="col" id="nomnoml2"></canvas>
+						<script>
+						var canvas = document.getElementById('nomnoml2')
+						var source = '\
+						[View]<:-[ImageView]\n\
+[View]<:-[TextView]\n\
+[View]<:-[ButtonView]';
+						nomnoml.draw(canvas, source)
+						</script>
+					</div>
+				</section>
+
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Example: Android `Activity`
+
+							Concern: user interaction with a single screen of the application
+
+							`Activity` defines what it means to show a screen
+
+							Subclasses for interaction with particular screen
+						</div>
+						<canvas class="col" id="nomnoml3"></canvas>
+						<script>
+						var canvas = document.getElementById('nomnoml3')
+						var source = '\
+[Activity]<:-[MainActivity]\n\
+[Activity]<:-[LoginActivity]';
+						nomnoml.draw(canvas, source)
+						</script>
+					</div>
+				</section>
+
+				<section data-markdown>
+					#### SoC Example
+
+					An Activity needs to communicate with another activities to
 					
+					* Change activity
+					* Open an external app
+
+					Communicating between activities _could_ be implemented in Activity
+
+						Activity.startActivity(Class&lt;?&gt; cls)</section>
+
+				<section data-markdown>
+					#### SoC Example
+
+					But then `Activity` would need to be concerned with all the different kinds of data we could pass between Activities.
+
+						class Activity
+						{
+							/* ... */
+
+							startActivity(Class&lt;?&gt; cls)
+
+							startActivityWithAction(Class&lt;?&gt; cls, String action)
+
+							startActivityWithData(Class&lt;?&gt; cls, Data extras)
+
+							startActivityWithActionAndData(Class&lt;?&gt; cls, String action, Data extras)
+
+						}</section>
+
+				<section data-markdown>
+					#### Command Design Pattern
+					
+					Encapsulate "how to start an Activity" within an `Intent` object.
+				</section>
+	
+
+				<section data-markdown>
+					#### Extending `Activity`
+
+					Each class should have one job
+					
+					Each `Activity` we write should do one thing. But what?
 
 				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### What is the role of an Activity?
+
+							Activities are responsible for interfacing with the UI elements.
+
+							* Provide callbacks for input events
+							* Call methods on Views
+						</div>
+						<canvas class="col" id="nomnoml1"></canvas>
+						<script>
+						var canvas = document.getElementById('nomnoml1')
+						var source = '\
+	[Activity]<-[<label>UI event callbacks]\n\
+	[<label>UI event callbacks]-[Views]\n\
+	[Activity]-[<label>Update methods]\n\
+	[<label>Update methods]->[Views]'
+						nomnoml.draw(canvas, source)
+						</script>
+					</div>
+				</section>
+
+				<section data-markdown>
+					#### The Activity
+
+					Keep extra behaviour out of `Activity`
+				</section>
+
+
+
 
 				<section data-markdown>
 					## Model View Controller
@@ -92,7 +299,7 @@
 				</section>
 
 				<section data-markdown>
-					## Without MVC
+					#### Without MVC
 
 					It is easy to mix business logic into your UI code.
 
@@ -102,10 +309,40 @@
 				</section>
 
 				<section data-markdown>
-					### Why MVC?
+					#### Why MVC?
 
 					By separating UI from business logic it is easier to develop and test code.
 				</section>
+
+				<section data-markdown>
+					#### Model
+
+					Stores data and business logic.
+
+					This is an interface allowing access to the data that is to be presented in the UI
+				</section>
+
+				<section data-markdown>
+					#### View
+
+					Holds UI componts. Gets data stored in the model to visualise it.
+
+					Is told to update by the controller.
+				</section>
+
+				<section data-markdown>
+					#### Controller
+
+					Core application logic. Gets input from user and updates the model and Controller as required.
+				</section>
+
+
+				<section data-markdown>
+					#### View-Controller
+
+					Often the view and controller are combined into a single class.
+				</section>
+
 
 			</div>
 		</div>
