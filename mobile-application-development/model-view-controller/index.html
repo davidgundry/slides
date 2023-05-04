@@ -87,17 +87,112 @@
 				</section>
 
 				<section data-markdown>
-					## Separation of Concerns
+					## Problems
 
-					Each 'part' (function, class, module) of the code addresses a separte concern.
+					In developing your App you may encounter problems:
 
-					It provides a cohesive chunk of functionality.
+					* Code structure is confusing
+					* Adding functionality takes longer and longer
+					* Hard to change without breaking
+					* Lots of bugs, hard to track down
 				</section>
 
 				<section data-markdown>
-					#### Why Separation of Concerns?
+					#### Model-View-Controller
 
-					Easier to write and maintain code through modularity.
+					Model View Controller is a architectural pattern for user interfaces
+
+					Using it may help you structure your code.
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							## Separation of Concerns
+
+							Each 'part' (function, class, module) of the code addresses a specific concern
+		
+							It provides a cohesive 'chunk' of functionality.
+						</div>
+						<div class="col">
+							<canvas id="nomnoml7"></canvas>
+							<script>
+								nomnoml.draw(document.getElementById('nomnoml7'), '\
+  [My Application|\n\
+  [UI]\n\
+  [Business;Logic]\n\
+  [Database]]');
+							</script>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Why Separation of Concerns?
+
+							Leads to modular code
+		
+							Easier to write and maintain
+						</div>
+						<div class="col">
+							<canvas id="nomnoml8"></canvas>
+							<script>
+								nomnoml.draw(document.getElementById('nomnoml8'), '\
+  [My Application|\n\
+  [UI]\n\
+  [Business;Logic]\n\
+  [Database]]');
+							</script>
+						</div>
+					</div>
+				</section>
+
+				<section data-markdown>
+					#### What is Modular Code?
+
+					As modules grows linearly, the number of possible interactions grows factorially
+
+					Goal: Loose coupling - minimal source code dependencies between modules
+
+					Job of software architect is to minimise complexity of these dependencies
+				</section>
+
+				<section data-markdown>
+					#### Object Oriented Programming
+
+					Polymorphism means any dependency can be inverted
+
+					Absolute control over direction of source code dependencies
+				</section>
+
+				<section data-markdown>
+					#### Code Quality Heuristic
+
+					How easy is it to delete a chunk of code?
+
+					How many compiler errors do you need to fix?
+				</section>
+
+
+				<section>
+					<div class="container">
+						<div class="col" data-markdown>
+							#### Single Responsibility Principle
+
+							Source code dependencies
+						</div>
+						<div class="col">
+							<canvas id="nomnoml4"></canvas>
+							<script>
+								nomnoml.draw(document.getElementById('nomnoml4'), '\
+	[<actor>UX;Developer]->[MyActivity]\n\
+	[<actor>Database;Developer]->[MyActivity]\n\
+	[<actor>;Translator]->[MyActivity]');
+							</script>
+						</div>
+					</div>
 				</section>
 
 				<section>
